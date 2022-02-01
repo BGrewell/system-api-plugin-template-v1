@@ -1,12 +1,12 @@
 package main
 
 import (
-  "github.com/BGrewell/system-api/plugin"
+  "github.com/BGrewell/system-api-plugin"
   "github.com/gin-gonic/gin"
 )
 
 func Load() plugin.Plugin {
-  return TemplatePlugin{}
+  return &TemplatePlugin{}
 }
 
 type TemplatePlugin struct {
@@ -24,6 +24,8 @@ func (p *TemplatePlugin) Register(config map[string]interface{}, r *gin.RouterGr
   
   // Register routes
   r.GET("/", p.HomeHandler)
+  
+  return nil
 }
 
 func (p *TemplatePlugin) Name() string {
